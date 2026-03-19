@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+config/credentials.enc
+config/salt.bin
+logs/
+output/
+assets/master_db.xlsx
+*.log
+.DS_Store
