@@ -66,26 +66,18 @@ def create_master_template(output_path: Path = None) -> Path:
     thin = Side(style="thin", color="CCCCCC")
     border = Border(left=thin, right=thin, top=thin, bottom=thin)
 
-    # ── 1행: 설명 행 ──
+    # ── 1행: 헤더 행 ──
     for col_idx, (name, width, desc, required) in enumerate(SCHEMA, start=1):
-        cell = ws.cell(row=1, column=col_idx, value=desc)
-        cell.fill = PatternFill("solid", fgColor=COLOR["desc_bg"])
-        cell.font = Font(size=9, color="666666", italic=True)
-        cell.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
-        cell.border = border
-        ws.column_dimensions[get_column_letter(col_idx)].width = width
-
-    # ── 2행: 헤더 행 ──
-    for col_idx, (name, width, desc, required) in enumerate(SCHEMA, start=1):
-        cell = ws.cell(row=2, column=col_idx, value=name)
+        cell = ws.cell(row=1, column=col_idx, value=name)
         bg = COLOR["header_required"] if required else COLOR["header_optional"]
         cell.fill = PatternFill("solid", fgColor=bg)
         cell.font = Font(size=11, bold=True, color=COLOR["header_font"])
         cell.alignment = Alignment(horizontal="center", vertical="center")
         cell.border = border
+        ws.column_dimensions[get_column_letter(col_idx)].width = width
 
-    # ── 3행~: 샘플 데이터 ──
-    for row_idx, row_data in enumerate(SAMPLE_DATA, start=3):
+    # ── 2행~: 샘플 데이터 ──
+    for row_idx, row_data in enumerate(SAMPLE_DATA, start=2):
         for col_idx, value in enumerate(row_data, start=1):
             cell = ws.cell(row=row_idx, column=col_idx, value=value)
             cell.fill = PatternFill("solid", fgColor=COLOR["sample_bg"])
@@ -94,13 +86,12 @@ def create_master_template(output_path: Path = None) -> Path:
             cell.border = border
 
     # 행 높이 설정
-    ws.row_dimensions[1].height = 30   # 설명행
-    ws.row_dimensions[2].height = 25   # 헤더행
-    for i in range(3, 3 + len(SAMPLE_DATA)):
+    ws.row_dimensions[1].height = 25   # 헤더행
+    for i in range(2, 2 + len(SAMPLE_DATA)):
         ws.row_dimensions[i].height = 20
 
     # 헤더 고정 (2행 아래부터 스크롤)
-    ws.freeze_panes = "A3"
+    ws.freeze_panes = "A2"
 
     # 범례 시트 추가
     ws2 = wb.create_sheet("사용법")
