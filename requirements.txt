@@ -1,0 +1,8 @@
+PyQt5==5.15.10
+openpyxl==3.1.2
+pandas==2.2.0
+selenium==4.18.1
+webdriver-manager==4.0.1
+cryptography==42.0.2
+pyinstaller==6.4.0
+requests==2.31.0

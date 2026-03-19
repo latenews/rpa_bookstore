@@ -1,0 +1,7 @@
+[2026-03-19 09:07:50] INFO [db_manager] 샘플 DB 생성: /root/rpa_bookstore/assets/master_db.xlsx
+[2026-03-19 09:07:50] INFO [db_manager] DB 로드 완료: 2건 (master_db.xlsx)
+[2026-03-19 09:07:50] INFO [db_manager] DB 로드 완료: 2건 (master_db.xlsx)
+[2026-03-19 09:07:50] INFO [db_manager] [aladin] 등록 대상: 2건
+[2026-03-19 09:07:50] INFO [db_manager] DB 로드 완료: 2건 (master_db.xlsx)
+[2026-03-19 09:07:50] INFO [db_manager] 재고정리 대상: 1건
+[2026-03-19 09:07:50] INFO [db_manager] 유효성 검사 통과
